@@ -1,9 +1,9 @@
 'use strict';
 
-const express = require('express');
+const { Router } = require('express');
 const { create, remove } = require('./account.controller');
 const { validation, Joi, authentication } = require('../../services');
-const router = express.Router();
+const router = Router();
 
 router.post(
   '/',

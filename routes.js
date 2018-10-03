@@ -15,6 +15,7 @@ module.exports = app => {
   authentication.setup();
   app.use('/authentication', require('./authentication'))
   app.use('/api/accounts', require('./api/accounts'))
+  app.use('/api/faces', require('./api/faces'))
   app
     .route('/health')
     .get((req, res) =>

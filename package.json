@@ -33,7 +33,10 @@
     "express-jwt": "^5.3.1",
     "express-mongo-sanitize": "^1.3.2",
     "express-sanitize-escape": "^1.1.0",
+    "face-recognition": "^0.9.3",
+    "lodash": "^4.17.11",
     "marpat": "^1.18.2",
+    "multer": "^1.4.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-local-marpat": "^2.0.1",
@@ -51,7 +54,6 @@
     "nodemon": "^1.17.5",
     "nyc": "^12.0.2",
     "mocha-lcov-reporter": "^1.3.0",
-    "prettier": "^1.13.7",
-    "varium": "^1.0.1"
+    "prettier": "^1.13.7"
   }
 }
