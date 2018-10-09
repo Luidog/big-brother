@@ -12,14 +12,16 @@ varium(process.env, manifest);
 const port = process.env.PORT;
 const env = process.env.ENVIRONMENT;
 
-const { datastore } = require('./datastore.config')
-const { redirects } = require('./redirects.config')
-const { tokens } = require('./tokens.config')
+const { filemaker } = require('./filemaker.config');
+const { datastore } = require('./datastore.config');
+const { redirects } = require('./redirects.config');
+const { tokens } = require('./tokens.config');
 
 module.exports = {
   port,
   env,
   datastore,
   redirects,
-  tokens
-}
+  tokens,
+  filemaker
+};
