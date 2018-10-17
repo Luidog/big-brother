@@ -6,7 +6,32 @@ install:
 before_script:
 - node --version
 - npm --version
+script: 
+  - npm run test
+  - zip -r big-brother * >/dev/null
+  - mkdir -p cd_upload
+  - mv big-brother.zip cd_upload/big-brother.zip
 after_success: npm run coverage
+deploy:
+- provider: s3
+  access_key_id: $AWS_CODEDEPLOY_PRODUCTION_ACCESS_KEY
+  secret_access_key: $AWS_CODEDEPLOY_PRODUCTION_SECRET_KEY
+  local_dir: cd_upload
+  skip_cleanup: true
+  on: &1
+    branch: master
+  bucket: brother-deploy-bucket
+  region: us-west-1
+- provider: codedeploy
+  access_key_id: $AWS_CODEDEPLOY_PRODUCTION_ACCESS_KEY
+  secret_access_key: $AWS_CODEDEPLOY_PRODUCTION_SECRET_KEY
+  bucket: brother-deploy-bucket
+  key: fantasyomatic.zip
+  bundle_type: zip
+  application: Big-Brother-Deploy
+  deployment_group: big-brother-deploy
+  region: us-west-1
+  on: *1
 env:
   global:
   - NODE_ENV=test

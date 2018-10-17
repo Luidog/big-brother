@@ -46,6 +46,6 @@ exports.recognize = (req, res) => {
   const images = req.files.map(file =>
     detector.detectFaces(loadImage(file.path))
   );
-  recognizer.addFaces(_.flatten(images), req.body.name);
+  recognizer.predict(image)
   res.status(200).json(recognizer.serialize());
 };

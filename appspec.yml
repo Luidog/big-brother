@@ -1,0 +1,10 @@
+version: 1.0
+os: linux
+files:
+  - source: ./
+    destination: /home/ec2-user/big-brother
+hooks:
+  ApplicationStart:
+    - location: deploy/start.sh
+      runas: ec2-user
+      timeout: 60
