@@ -16,7 +16,7 @@ const startServer = () =>
         }
         return client.save();
       })
-      .catch(error => console.log(error.message, error));
+      .catch(error => logger.warn(error.message, error));
     server.listen(port, () =>
       logger.info('Facial Recognition Server Running', {
         port: port,
