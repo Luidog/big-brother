@@ -23,13 +23,12 @@ deploy:
   skip_cleanup: true
   on: &1
     branch: master
-  bucket: brother-deploy-bucket
-  region: us-west-2
+  bucket: big-brother-deploy-bucket
+  region: us-west-1
 - provider: codedeploy
   access_key_id: $AWS_CODEDEPLOY_PRODUCTION_ACCESS_KEY
   secret_access_key: $AWS_CODEDEPLOY_PRODUCTION_SECRET_KEY
-  bucket: brother-deploy-bucket
-  region: us-west-2
+  bucket: big-brother-deploy-bucket
   key: big-brother.zip
   bundle_type: zip
   application: Big-Brother-Deploy
