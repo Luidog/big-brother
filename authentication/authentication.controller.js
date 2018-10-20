@@ -5,7 +5,6 @@ const { token } = require('../services');
 exports.access = (req, res, next) =>
   passport.authenticate('local', (error, account, info) => {
     error = error || info;
-    console.log(error)
     if (error) return res.boom.unauthorized(error.message);
     if (!account)
       return res.boom.notFound('There is no account for that token');
