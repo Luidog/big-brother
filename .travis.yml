@@ -29,7 +29,7 @@ deploy:
   access_key_id: $AWS_CODEDEPLOY_PRODUCTION_ACCESS_KEY
   secret_access_key: $AWS_CODEDEPLOY_PRODUCTION_SECRET_KEY
   bucket: brother-deploy-bucket
-  key: fantasyomatic.zip
+  key: big-brother.zip
   bundle_type: zip
   application: Big-Brother-Deploy
   deployment_group: big-brother-deploy
