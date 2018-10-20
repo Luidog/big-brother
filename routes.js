@@ -19,7 +19,7 @@ module.exports = app => {
   app.use('/api/faces', require('./api/faces'));
   app
     .route('/health')
-    .get((req, res) => res.status(200).json({ message: 'Server Running' }));
+    .get((req, res) => res.status(200).json({ message: 'Failing to fetch me at first, keep encouraged. Missing me one place, search another. I stop somewhere waiting for you.' }));
   app.use(validation.errors);
   app.all('*', (req, res) => res.redirect(redirects.url));
   
