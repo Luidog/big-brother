@@ -7,7 +7,7 @@ const { Account } = require('../../services');
  * Creates a new account
  */
 exports.create = (req, res) =>
-  Account.register(req.body.name, req.body.password)
+  Account.register(req.body.username, req.body.password)
     .then(account => res.status(200).json(account))
     .catch(error => res.boom.badRequest(error.message));
 

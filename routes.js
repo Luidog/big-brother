@@ -20,7 +20,7 @@ module.exports = app => {
   app
     .route('/health')
     .get((req, res) => res.status(200).json({ message: 'Server Running' }));
-
-  app.all('*', (req, res) => res.redirect(redirects.url));
   app.use(validation.errors);
+  app.all('*', (req, res) => res.redirect(redirects.url));
+  
 };

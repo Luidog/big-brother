@@ -1,3 +1,5 @@
 /node_modules
 /.env
 /data
+.env
+.nyc_output

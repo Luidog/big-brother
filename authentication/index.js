@@ -10,7 +10,7 @@ router.post(
   '/',
   validation.test({
     body: Joi.object().keys({
-      name: Joi.string().required(),
+      username: Joi.string().required(),
       password: Joi.string().required()
     })
   }),
