@@ -29,6 +29,7 @@ deploy:
   access_key_id: $AWS_CODEDEPLOY_PRODUCTION_ACCESS_KEY
   secret_access_key: $AWS_CODEDEPLOY_PRODUCTION_SECRET_KEY
   bucket: brother-deploy-bucket
+  region: us-west-2
   key: big-brother.zip
   bundle_type: zip
   application: Big-Brother-Deploy
