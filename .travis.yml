@@ -24,7 +24,7 @@ deploy:
   on: &1
     branch: master
   bucket: brother-deploy-bucket
-  region: us-west-1
+  region: us-west-2
 - provider: codedeploy
   access_key_id: $AWS_CODEDEPLOY_PRODUCTION_ACCESS_KEY
   secret_access_key: $AWS_CODEDEPLOY_PRODUCTION_SECRET_KEY
@@ -33,7 +33,7 @@ deploy:
   bundle_type: zip
   application: Big-Brother-Deploy
   deployment_group: big-brother-deploy
-  region: us-west-1
+  region: us-west-2
   on: *1
 env:
   global:
