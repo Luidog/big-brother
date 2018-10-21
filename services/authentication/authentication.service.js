@@ -3,7 +3,7 @@
 const passport = require('passport');
 const { Strategy } = require('passport-local');
 const { compose } = require('compose-middleware');
-
+const { token } = require('../token');
 const { Account } = require('../account');
 
 const header = (req, res, next) => {
@@ -22,9 +22,7 @@ const errors = (error, req, res, next) => {
   next(res, res, next);
 };
 
-const attach = (req, res, next) => {
-  console.log(req.account);
-
+const attach = (req, res, next) => 
   Account.findOne({ uid: req.account.uid })
     .then(account => {
       if (!account) {
@@ -36,7 +34,7 @@ const attach = (req, res, next) => {
       next();
     })
     .catch(error => next(error));
-};
+
 
 const verify = () => compose([header, validateAuthentication, errors, attach]);
 

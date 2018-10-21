@@ -9,7 +9,7 @@ exports.access = (req, res, next) =>
     if (!account)
       return res.boom.notFound('There is no account for that token');
     token
-      .authentication({ name: account.name, type: 'authentication' })
+      .authentication({ uid: account.uid, type: 'authentication' })
       .then(token =>
         res.status(200).json({
           token: token

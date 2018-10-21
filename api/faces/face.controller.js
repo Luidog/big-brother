@@ -13,39 +13,60 @@ exports.train = (req, res) =>
   Filemaker.findOne()
     .then(client => {
       return client
-        .find('Heroes', req.body)
+        .find('Faces', Object.assign(req.body, { imageName: '*' }))
         .then(response => transform(response.data))
-        .then(records =>
-          _.map(records, (record, index, collection) =>
-            image
-              .transport(value, {
-                name: `${record.recordId}-${object['imageName']}`
-              })
-              .then(response => {
-                recognizer.addFaces(
-                  detector.detectFaces(
-                    loadImage(path.join('./data', response.location))
-                  ),
-                  'lui'
-                );
-              })
-              .then(() =>
-                client
-                  .edit('Heroes', record.recordId, {
-                    faceDescriptor: recognizer.serialize()
-                  })
-                  .catch(error => logger.error(error.message, error))
-              )
-          )
-        );
+        .then(records => {
+          console.log(records);
+          return _.map(
+            records,
+            (record, index, collection) =>
+              record.image !== ''
+                ? image
+                    .transport(record.image, {
+                      name: `${record.recordId}-${record.imageName}`
+                    })
+                    .then(response => {
+                      console.log(response)
+                      recognizer.addFaces(
+                        detector.detectFaces(
+                          loadImage(path.join('./data', response.location))
+                        ),
+                        req.body.name
+                      );
+                    })
+                    .then(() =>
+                      client
+                        .edit('Faces', record.recordId, {
+                          descriptor: recognizer.serialize()
+                        })
+                        .catch(error => logger.error(error.message, error))
+                    )
+                : { recordId: record.recordId, message: 'No Image Found' }
+          );
+        });
     })
     .then(response => res.status(200).json(response))
     .catch(error => res.boom.badRequest(error.message));
 
-exports.recognize = (req, res) => {
-  const images = req.files.map(file =>
-    detector.detectFaces(loadImage(file.path))
-  );
-  recognizer.predict(image)
-  res.status(200).json(recognizer.serialize());
-};
+exports.recognize = (req, res) =>
+  Filemaker.findOne()
+    .then(client => {
+      return client
+        .find('Faces', req.body, { limit: 1 })
+        .then(response => transform(response.data[0]))
+        .then(record =>
+          image.transport(record.image, {
+            name: `${record.recordId}-${record.imageName}`
+          })
+        )
+        .then(response => {
+          console.log(response)
+          let face = detector.detectFaces(path.join('./data', response.location));
+          console.log(face)
+          client.edit('Faces', record.recordId, {
+            prediction: recognizer.predict(face)
+          });
+        });
+    })
+    .then(response => res.status(200).json(response))
+    .catch(error => res.boom.badRequest(error.message));
