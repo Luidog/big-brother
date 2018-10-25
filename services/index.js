@@ -7,7 +7,8 @@ const { logger } = require('./logger');
 const { token } = require('./token');
 const { upload } = require('./upload');
 const { validation, Joi } = require('./validation');
-const { Filemaker } = require('fms-api-client')
+const { Filemaker } = require('fms-api-client');
+const { encryption } = require('./encryption');
 
 module.exports = {
   Account,
@@ -18,5 +19,6 @@ module.exports = {
   upload,
   validation,
   Joi,
-  Filemaker
+  Filemaker,
+  encryption
 };

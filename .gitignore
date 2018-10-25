@@ -3,3 +3,6 @@
 /data
 .env
 .nyc_output
+.DS_Store
+storage
+build

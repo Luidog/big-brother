@@ -15,6 +15,7 @@ const env = process.env.ENVIRONMENT;
 const { filemaker } = require('./filemaker.config');
 const { datastore } = require('./datastore.config');
 const { redirects } = require('./redirects.config');
+const { key, algorithm } = require('./encryption.config');
 const { tokens } = require('./tokens.config');
 
 module.exports = {
@@ -22,6 +23,8 @@ module.exports = {
   env,
   datastore,
   redirects,
+  key,
+  algorithm,
   tokens,
   filemaker
 };

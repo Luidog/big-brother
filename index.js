@@ -4,10 +4,10 @@ const { connect } = require('marpat');
 const { server } = require('./server');
 const routes = require('./routes');
 const { port, env, datastore, filemaker } = require('./configuration');
-const { logger, Filemaker } = require('./services');
+const { logger, encryption, Filemaker } = require('./services');
 
 const startServer = () =>
-  connect(datastore.url).then(db => {
+  connect(datastore.url, encryption).then(db => {
     routes(server);
     Filemaker.findOne()
       .then(client => {
