@@ -1,13 +1,11 @@
 'use strict';
 
-const cv = require('opencv4nodejs');
+
 const {
   FaceRecognizer,
   FaceDetector,
-  loadImage,
-  CvImage,
-  cvImageToImageRGB
-} = require('face-recognition').withCv(cv);
+  loadImage
+} = require('face-recognition')
 const { transform, Filemaker } = require('fms-api-client');
 const { image, logger } = require('../../services');
 const path = require('path');
