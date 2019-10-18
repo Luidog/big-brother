@@ -16,3 +16,4 @@ patch:
         patched: '2019-07-04T04:17:57.970Z'
     - winston > async > lodash:
         patched: '2019-07-04T04:17:57.970Z'
+
