@@ -49,7 +49,7 @@
     "passport-local": "^1.0.0",
     "passport-local-marpat": "^2.0.1",
     "varium": "^1.0.1",
-    "winston": "^3.1.0",
+    "winston": "^3.3.0",
     "snyk": "^1.161.1"
   },
   "devDependencies": {
