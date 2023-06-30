@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/Luidog/big-brother#readme",
   "dependencies": {
-    "axios-cookiejar-support": "^0.4.2",
+    "axios-cookiejar-support": "^1.0.0",
     "body-parser": "^1.18.3",
     "celebrate": "^8.0.2",
     "compose-middleware": "^5.0.0",
